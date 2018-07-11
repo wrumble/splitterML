@@ -18,8 +18,8 @@ class splitterMLUITests: XCTestCase {
     }
     
     func testWelcomeViewControllerAppears() {
-        //let welcomeViewController = app.otherElements["WelcomeViewController"]
+        let welcomeViewController = app.otherElements["WelcomeViewController"]
 
-        XCTAssertTrue(true)
+        XCTAssertTrue(false)
     }
 }
