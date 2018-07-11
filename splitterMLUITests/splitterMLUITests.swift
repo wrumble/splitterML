@@ -9,14 +9,17 @@
 import XCTest
 
 class splitterMLUITests: XCTestCase {
-        
+    
+    private let app = XCUIApplication()
+    
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
-        XCUIApplication().launch()
+        app.launch()
     }
     
-    func testExample() {
-        XCTAssertTrue(true)
+    func testWelcomeViewControllerAppears() {
+        let welcomeViewController = app.otherElements["WelcomeViewController"]
+
+        XCTAssertTrue(welcomeViewController.isHittable)
     }
 }
