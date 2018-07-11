@@ -20,6 +20,6 @@ class splitterMLUITests: XCTestCase {
     func testWelcomeViewControllerAppears() {
         let welcomeViewController = app.otherElements["WelcomeViewController"]
 
-        XCTAssertTrue(false)
+        XCTAssertTrue(welcomeViewController.isHittable)
     }
 }
