@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D8420F5FE2500AA2AAC /* AppDelegate.swift */; };
+		87801D8720F5FE2500AA2AAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D8620F5FE2500AA2AAC /* ViewController.swift */; };
+		87801D8A20F5FE2500AA2AAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87801D8820F5FE2500AA2AAC /* Main.storyboard */; };
+		87801D8C20F5FE2700AA2AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87801D8B20F5FE2700AA2AAC /* Assets.xcassets */; };
+		87801D8F20F5FE2700AA2AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */; };
+		87801D9A20F5FE2700AA2AAC /* splitterMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D9920F5FE2700AA2AAC /* splitterMLTests.swift */; };
+		87801DA520F5FE2700AA2AAC /* splitterMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DA420F5FE2700AA2AAC /* splitterMLUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87801D9620F5FE2700AA2AAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87801D7920F5FE2500AA2AAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87801D8020F5FE2500AA2AAC;
+			remoteInfo = splitterML;
+		};
+		87801DA120F5FE2700AA2AAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87801D7920F5FE2500AA2AAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87801D8020F5FE2500AA2AAC;
+			remoteInfo = splitterML;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87801D8120F5FE2500AA2AAC /* splitterML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = splitterML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87801D8420F5FE2500AA2AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		87801D8620F5FE2500AA2AAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87801D8920F5FE2500AA2AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87801D8B20F5FE2700AA2AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		87801D8E20F5FE2700AA2AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		87801D9020F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87801D9520F5FE2700AA2AAC /* splitterMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = splitterMLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87801D9920F5FE2700AA2AAC /* splitterMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitterMLTests.swift; sourceTree = "<group>"; };
+		87801D9B20F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87801DA020F5FE2700AA2AAC /* splitterMLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = splitterMLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87801DA420F5FE2700AA2AAC /* splitterMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitterMLUITests.swift; sourceTree = "<group>"; };
+		87801DA620F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87801D7E20F5FE2500AA2AAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9220F5FE2700AA2AAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9D20F5FE2700AA2AAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87801D7820F5FE2500AA2AAC = {
+			isa = PBXGroup;
+			children = (
+				87801D8320F5FE2500AA2AAC /* splitterML */,
+				87801D9820F5FE2700AA2AAC /* splitterMLTests */,
+				87801DA320F5FE2700AA2AAC /* splitterMLUITests */,
+				87801D8220F5FE2500AA2AAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87801D8220F5FE2500AA2AAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87801D8120F5FE2500AA2AAC /* splitterML.app */,
+				87801D9520F5FE2700AA2AAC /* splitterMLTests.xctest */,
+				87801DA020F5FE2700AA2AAC /* splitterMLUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87801D8320F5FE2500AA2AAC /* splitterML */ = {
+			isa = PBXGroup;
+			children = (
+				87801D8420F5FE2500AA2AAC /* AppDelegate.swift */,
+				87801D8620F5FE2500AA2AAC /* ViewController.swift */,
+				87801D8820F5FE2500AA2AAC /* Main.storyboard */,
+				87801D8B20F5FE2700AA2AAC /* Assets.xcassets */,
+				87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */,
+				87801D9020F5FE2700AA2AAC /* Info.plist */,
+			);
+			path = splitterML;
+			sourceTree = "<group>";
+		};
+		87801D9820F5FE2700AA2AAC /* splitterMLTests */ = {
+			isa = PBXGroup;
+			children = (
+				87801D9920F5FE2700AA2AAC /* splitterMLTests.swift */,
+				87801D9B20F5FE2700AA2AAC /* Info.plist */,
+			);
+			path = splitterMLTests;
+			sourceTree = "<group>";
+		};
+		87801DA320F5FE2700AA2AAC /* splitterMLUITests */ = {
+			isa = PBXGroup;
+			children = (
+				87801DA420F5FE2700AA2AAC /* splitterMLUITests.swift */,
+				87801DA620F5FE2700AA2AAC /* Info.plist */,
+			);
+			path = splitterMLUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87801D8020F5FE2500AA2AAC /* splitterML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87801DA920F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterML" */;
+			buildPhases = (
+				87801D7D20F5FE2500AA2AAC /* Sources */,
+				87801D7E20F5FE2500AA2AAC /* Frameworks */,
+				87801D7F20F5FE2500AA2AAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = splitterML;
+			productName = splitterML;
+			productReference = 87801D8120F5FE2500AA2AAC /* splitterML.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87801D9420F5FE2700AA2AAC /* splitterMLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87801DAC20F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterMLTests" */;
+			buildPhases = (
+				87801D9120F5FE2700AA2AAC /* Sources */,
+				87801D9220F5FE2700AA2AAC /* Frameworks */,
+				87801D9320F5FE2700AA2AAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87801D9720F5FE2700AA2AAC /* PBXTargetDependency */,
+			);
+			name = splitterMLTests;
+			productName = splitterMLTests;
+			productReference = 87801D9520F5FE2700AA2AAC /* splitterMLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		87801D9F20F5FE2700AA2AAC /* splitterMLUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87801DAF20F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterMLUITests" */;
+			buildPhases = (
+				87801D9C20F5FE2700AA2AAC /* Sources */,
+				87801D9D20F5FE2700AA2AAC /* Frameworks */,
+				87801D9E20F5FE2700AA2AAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87801DA220F5FE2700AA2AAC /* PBXTargetDependency */,
+			);
+			name = splitterMLUITests;
+			productName = splitterMLUITests;
+			productReference = 87801DA020F5FE2700AA2AAC /* splitterMLUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87801D7920F5FE2500AA2AAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Wayne Rumble";
+				TargetAttributes = {
+					87801D8020F5FE2500AA2AAC = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					87801D9420F5FE2700AA2AAC = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 87801D8020F5FE2500AA2AAC;
+					};
+					87801D9F20F5FE2700AA2AAC = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 87801D8020F5FE2500AA2AAC;
+					};
+				};
+			};
+			buildConfigurationList = 87801D7C20F5FE2500AA2AAC /* Build configuration list for PBXProject "splitterML" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 87801D7820F5FE2500AA2AAC;
+			productRefGroup = 87801D8220F5FE2500AA2AAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87801D8020F5FE2500AA2AAC /* splitterML */,
+				87801D9420F5FE2700AA2AAC /* splitterMLTests */,
+				87801D9F20F5FE2700AA2AAC /* splitterMLUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87801D7F20F5FE2500AA2AAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87801D8F20F5FE2700AA2AAC /* LaunchScreen.storyboard in Resources */,
+				87801D8C20F5FE2700AA2AAC /* Assets.xcassets in Resources */,
+				87801D8A20F5FE2500AA2AAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9320F5FE2700AA2AAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9E20F5FE2700AA2AAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87801D7D20F5FE2500AA2AAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87801D8720F5FE2500AA2AAC /* ViewController.swift in Sources */,
+				87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9120F5FE2700AA2AAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87801D9A20F5FE2700AA2AAC /* splitterMLTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87801D9C20F5FE2700AA2AAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87801DA520F5FE2700AA2AAC /* splitterMLUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87801D9720F5FE2700AA2AAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87801D8020F5FE2500AA2AAC /* splitterML */;
+			targetProxy = 87801D9620F5FE2700AA2AAC /* PBXContainerItemProxy */;
+		};
+		87801DA220F5FE2700AA2AAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87801D8020F5FE2500AA2AAC /* splitterML */;
+			targetProxy = 87801DA120F5FE2700AA2AAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87801D8820F5FE2500AA2AAC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87801D8920F5FE2500AA2AAC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87801D8E20F5FE2700AA2AAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87801DA720F5FE2700AA2AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		87801DA820F5FE2700AA2AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87801DAA20F5FE2700AA2AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterML/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterML;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87801DAB20F5FE2700AA2AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterML/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterML;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		87801DAD20F5FE2700AA2AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterMLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterMLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/splitterML.app/splitterML";
+			};
+			name = Debug;
+		};
+		87801DAE20F5FE2700AA2AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterMLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterMLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/splitterML.app/splitterML";
+			};
+			name = Release;
+		};
+		87801DB020F5FE2700AA2AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterMLUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterMLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = splitterML;
+			};
+			name = Debug;
+		};
+		87801DB120F5FE2700AA2AAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WJMTPNAAQV;
+				INFOPLIST_FILE = splitterMLUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.splitterMLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = splitterML;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87801D7C20F5FE2500AA2AAC /* Build configuration list for PBXProject "splitterML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87801DA720F5FE2700AA2AAC /* Debug */,
+				87801DA820F5FE2700AA2AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87801DA920F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87801DAA20F5FE2700AA2AAC /* Debug */,
+				87801DAB20F5FE2700AA2AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87801DAC20F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterMLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87801DAD20F5FE2700AA2AAC /* Debug */,
+				87801DAE20F5FE2700AA2AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87801DAF20F5FE2700AA2AAC /* Build configuration list for PBXNativeTarget "splitterMLUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87801DB020F5FE2700AA2AAC /* Debug */,
+				87801DB120F5FE2700AA2AAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87801D7920F5FE2500AA2AAC /* Project object */;
+}
