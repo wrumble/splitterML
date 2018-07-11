@@ -17,4 +17,4 @@ script:
   -sdk iphonesimulator
   -destination 'platform=iOS Simulator,name=iPhone 5s'
   build 
-  testx
+  test
