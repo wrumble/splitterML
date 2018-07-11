@@ -1,0 +1,20 @@
+language: objective-c
+osx_image: xcode9.4
+
+#xcode_project: splitterML.xcodeproj
+#xcode_workspace: splitterML.xcworkspace
+#xcode_scheme: splitterML
+
+podfile: Podfile
+
+#xcode_sdk: iphonesimulator8.4 
+
+script:
+
+  xcodebuild
+  -workspace splitterML.xcworkspace
+  -scheme splitterML
+  -sdk iphonesimulator
+  -destination 'platform=iOS Simulator,name=iPhone 5s'
+  build 
+  testx
