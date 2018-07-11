@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D8420F5FE2500AA2AAC /* AppDelegate.swift */; };
-		87801D8720F5FE2500AA2AAC /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D8620F5FE2500AA2AAC /* WelcomViewController.swift */; };
+		87801D8720F5FE2500AA2AAC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D8620F5FE2500AA2AAC /* WelcomeViewController.swift */; };
 		87801D8C20F5FE2700AA2AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87801D8B20F5FE2700AA2AAC /* Assets.xcassets */; };
 		87801D8F20F5FE2700AA2AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */; };
 		87801D9A20F5FE2700AA2AAC /* splitterMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D9920F5FE2700AA2AAC /* splitterMLTests.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		87801D8120F5FE2500AA2AAC /* splitterML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = splitterML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87801D8420F5FE2500AA2AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87801D8620F5FE2500AA2AAC /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
+		87801D8620F5FE2500AA2AAC /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		87801D8B20F5FE2700AA2AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87801D8E20F5FE2700AA2AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87801D9020F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8736C5C920F650D4001D4E38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		87801D7820F5FE2500AA2AAC = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +143,7 @@
 		87801DB320F642C500AA2AAC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				87801D8620F5FE2500AA2AAC /* WelcomViewController.swift */,
+				87801D8620F5FE2500AA2AAC /* WelcomeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 		87801DB420F642DA00AA2AAC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8736C5C920F650D4001D4E38 /* Extensions */,
 				87801DB520F642E200AA2AAC /* Protocols */,
 			);
 			path = Common;
@@ -287,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87801D8720F5FE2500AA2AAC /* WelcomViewController.swift in Sources */,
+				87801D8720F5FE2500AA2AAC /* WelcomeViewController.swift in Sources */,
 				87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */,
 				87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */,
 			);

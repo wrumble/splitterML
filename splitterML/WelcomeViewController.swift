@@ -19,6 +19,7 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController: Subviewable {
     
     func setupSubviews() {
+        view.accessibilityIdentifier = "WelcomeViewController"
         
     }
     
