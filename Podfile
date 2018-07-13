@@ -6,6 +6,8 @@ target 'splitterML' do
   use_frameworks!
 
   # Pods for splitterML
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
   target 'splitterMLTests' do
     inherit! :search_paths
@@ -16,5 +18,4 @@ target 'splitterML' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end
