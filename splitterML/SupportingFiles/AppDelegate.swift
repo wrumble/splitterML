@@ -26,8 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
-        window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        if Auth.auth().currentUser != nil {
+            window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        } else {
+            window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+        }
     }
 }
 

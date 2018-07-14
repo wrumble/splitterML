@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         setup()
     }
     
-    @objc func logOutAction(sender: AnyObject) {
+    @objc func logOut() {
         if Auth.auth().currentUser != nil {
             do {
                 try Auth.auth().signOut()
@@ -37,7 +37,7 @@ extension HomeViewController: Subviewable {
         view.backgroundColor = .white
         view.accessibilityIdentifier = "HomeViewController"
         
-        logoutButton.addTarget(self, action: #selector(logOutAction), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.backgroundColor = .black
     }
