@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class WelcomeViewController: UIViewController {
     
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
+    private let facebookLoginButton = FBSDKLoginButton()
     private let signUpButton = UIButton()
     private let resetPasswordButton = UIButton()
 
@@ -81,6 +83,41 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    @objc func facebookLogin(sender: UIButton) {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signInAndRetrieveData(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+            })
+        }
+    }
+    
     @objc func resetPassword(_ sender: AnyObject) {
         
         if self.emailTextField.text == "" {
@@ -133,6 +170,9 @@ extension WelcomeViewController: Subviewable {
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .black
         
+        facebookLoginButton.addTarget(self, action: #selector(facebookLogin), for: .touchUpInside)
+        facebookLoginButton.setTitle("Login with Facebook", for: .normal)
+        
         signUpButton.addTarget(self, action: #selector(createAccount), for: .touchUpInside)
         signUpButton.setTitle("Sign Up", for: .normal)
         signUpButton.setTitleColor(.black, for: .normal)
@@ -148,6 +188,7 @@ extension WelcomeViewController: Subviewable {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
+        view.addSubview(facebookLoginButton)
         view.addSubview(signUpButton)
         view.addSubview(resetPasswordButton)
     }
@@ -172,6 +213,11 @@ extension WelcomeViewController: Subviewable {
         loginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         loginButton.addHeightConstraint(with: 44)
+        
+        facebookLoginButton.pinTop(to: loginButton, anchor: .bottom, constant: Layout.spacer)
+        facebookLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
+        facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        facebookLoginButton.addHeightConstraint(with: 44)
         
         signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
         signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)

@@ -8,6 +8,8 @@ target 'splitterML' do
   # Pods for splitterML
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'FBSDKLoginKit'
+  
 
   target 'splitterMLTests' do
     inherit! :search_paths
