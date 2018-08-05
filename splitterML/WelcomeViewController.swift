@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import Firebase
 import FBSDKLoginKit
 
 class WelcomeViewController: UIViewController {
-    
-    typealias AuthFunction = (String, String, AuthDataResultCallback?) -> ()
-    
+        
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
@@ -26,6 +23,8 @@ class WelcomeViewController: UIViewController {
     required init(viewModel: WelcomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        bindViewModel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +33,19 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
+    }
+    
+    private func bindViewModel() {
+        viewModel.resetEmailTextField = resetEmailTextField
+        viewModel.showAlert = showAlert
+        viewModel.textFieldsAreValid = textFieldsAreValid
+        viewModel.goToHomeViewController = goToHomeViewController
+    }
+    
+    private func resetEmailTextField() {
+        emailTextField.text = ""
     }
     
     private func showAlert(title: String,
@@ -43,16 +54,6 @@ class WelcomeViewController: UIViewController {
                                                          message: message)
         
         present(alertView, animated: true, completion: nil)
-    }
-    
-    private func checkAfterAuth(_ error: Error?) {
-        if error == nil {
-            navigationController?.pushViewController(HomeViewController(), animated: true)
-        } else {
-            guard let errorMessage = error?.localizedDescription else { return }
-            showAlert(title: String.Localized.Common.error,
-                                 message: errorMessage)
-        }
     }
     
     private func textFieldsAreValid() -> Bool {
@@ -70,6 +71,10 @@ class WelcomeViewController: UIViewController {
         return true
     }
     
+    private func goToHomeViewController() {
+        navigationController?.pushViewController(HomeViewController(), animated: true)
+    }
+    
     private func emailTextFieldValid() -> Bool {
         if let text = emailTextField.text, !text.isValidEmail() {
             showAlert(title: String.Localized.Common.error,
@@ -78,64 +83,27 @@ class WelcomeViewController: UIViewController {
         }
         return true
     }
-    
-    private func checkAuth(authFunc: AuthFunction) {
-         if textFieldsAreValid() {
-            guard let email = emailTextField.text,
-                    let password = passwordTextField.text else { return }
-            authFunc(email, password) { [weak self] (user, error) in
-                guard let strongSelf = self else { return }
-                strongSelf.checkAfterAuth(error)
-            }
-        }
-    }
 
-    @objc func createAccount() {
-        checkAuth(authFunc: Auth.auth().createUser)
+    @objc private func createFirebaseAccount() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text else { return }
+        viewModel.createFirebaseAccount(email: email, password: password)
     }
     
-    @objc func login() {
-        checkAuth(authFunc: Auth.auth().signIn(withEmail:password:completion:))
+    @objc private func login() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text else { return }
+        viewModel.loginToFirebase(email: email, password: password)
     }
     
-    @objc func facebookLogin() {
-        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"],
-                                  from: self) { [weak self] (_, error) in
-            guard let strongSelf = self else { return }
-            if let accessToken = FBSDKAccessToken.current(), error != nil {
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                
-                Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
-                    strongSelf.checkAfterAuth(error)
-                }
-            } else {
-                guard let errorMessage = error?.localizedDescription else { return }
-                strongSelf.showAlert(title: String.Localized.Common.oops,
-                                     message: errorMessage)
-            }
-        }
+    @objc private func loginWithFacebook() {
+        viewModel.loginWithFacebook(viewController: self)
     }
     
-    @objc func resetPassword() {
-        
+    @objc private func resetPassword() {
         if emailTextFieldValid() {
-            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: { [weak self] (error) in
-                guard let strongSelf = self else { return }
-                var title = ""
-                var message = ""
-                
-                if error != nil {
-                    guard let errorMessage = error?.localizedDescription else { return }
-                    title = String.Localized.Common.error
-                    message = errorMessage
-                } else {
-                    title = String.Localized.Common.success
-                    message = String.Localized.WelcomeVC.passwordResetEmail
-                    strongSelf.emailTextField.text = ""
-                }
-                
-                strongSelf.showAlert(title: title, message: message)
-            })
+            guard let email = emailTextField.text else { return }
+            viewModel.resetPassword(email: email)
         }
     }
 }
@@ -157,10 +125,10 @@ extension WelcomeViewController: Subviewable {
         loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
         loginButton.backgroundColor = .black
         
-        facebookLoginButton.addTarget(self, action: #selector(facebookLogin), for: .touchUpInside)
+        facebookLoginButton.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
         facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)
         
-        signUpButton.addTarget(self, action: #selector(createAccount), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
         signUpButton.setTitleColor(.black, for: .normal)
         signUpButton.backgroundColor = .white
@@ -181,11 +149,11 @@ extension WelcomeViewController: Subviewable {
     }
     
     func setupAutoLayout() {
-        emailTextField.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor,
+        emailTextField.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,
                                             constant: Layout.spacer).isActive = true
 
         if #available(iOS 11.0, *) {
-            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                 constant: Layout.spacer).isActive = true
         }
         
