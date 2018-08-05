@@ -21,17 +21,26 @@ class WelcomeViewController: UIViewController {
     private let signUpButton = UIButton()
     private let resetPasswordButton = UIButton()
 
+    private let viewModel: WelcomeViewModel
+    
+    required init(viewModel: WelcomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     private func showAlert(title: String,
-                           message: String,
-                           buttonTitle: String? = String.Localized.Common.ok) {
+                           message: String) {
         let alertView = AlertViewFactory.createAlertView(title: title,
-                                                         message: message,
-                                                         buttonTitle: buttonTitle)
+                                                         message: message)
         
         present(alertView, animated: true, completion: nil)
     }

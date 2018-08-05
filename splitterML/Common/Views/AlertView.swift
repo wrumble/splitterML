@@ -13,11 +13,10 @@ class AlertViewFactory {
     
     static func createAlertView(title: String?,
                                 message: String?,
-                                buttonTitle: String? = String.Localized.Common.cancel,
                                 preferredStyle: UIAlertControllerStyle = .alert) -> UIAlertController {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         
-        alertView.addAction(.cancelAction)
+        alertView.addAction(.okAction)
         
         return alertView
     }

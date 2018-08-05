@@ -37,7 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser != nil {
             window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         } else {
-            window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+            let viewModel = WelcomeViewModel()
+            let viewController = WelcomeViewController(viewModel: viewModel)
+            window?.rootViewController = UINavigationController(rootViewController: viewController)
         }
     }
 }
