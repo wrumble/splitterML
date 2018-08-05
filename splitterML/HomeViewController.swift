@@ -24,9 +24,17 @@ class HomeViewController: UIViewController {
                 try Auth.auth().signOut()
                 navigationController?.popViewController(animated: true)
             } catch let error as NSError {
-                print(error.localizedDescription)
+                showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
             }
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alertView = AlertViewFactory.createAlertView(title: title,
+                                                         message: message)
+        
+        present(alertView, animated: true, completion: nil)
+        
     }
 }
 
@@ -35,10 +43,10 @@ extension HomeViewController: Subviewable {
         navigationItem.setHidesBackButton(true, animated: true)
         
         view.backgroundColor = .white
-        view.accessibilityIdentifier = "HomeViewController"
+        view.accessibilityIdentifier = String.AccessID.homeVC
         
         logoutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
-        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setTitle(String.Localized.HomeVC.logout, for: .normal)
         logoutButton.backgroundColor = .black
     }
     
@@ -50,6 +58,6 @@ extension HomeViewController: Subviewable {
         logoutButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.spacer)
         logoutButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         logoutButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        logoutButton.addHeightConstraint(with: 44)
+        logoutButton.addHeightConstraint(with: Layout.buttonHeight)
     }
 }

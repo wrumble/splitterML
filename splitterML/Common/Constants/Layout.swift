@@ -11,4 +11,6 @@ import UIKit
 class Layout {
     static let spacer: CGFloat = 20
     static let margin: CGFloat = 16
+    static let buttonHeight: CGFloat = 44
+    static let textFieldHeight: CGFloat = 44
 }

@@ -12,6 +12,8 @@ import FBSDKLoginKit
 
 class WelcomeViewController: UIViewController {
     
+    typealias AuthFunction = (String, String, AuthDataResultCallback?) -> ()
+    
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
@@ -24,131 +26,106 @@ class WelcomeViewController: UIViewController {
         setup()
     }
     
-    @objc func createAccount(_ sender: AnyObject) {
-        if emailTextField.text == "" {
-            let alertController = UIAlertController(title: "Error",
-                                                    message: "Please enter your email and password",
-                                                    preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK",
-                                              style: .cancel,
-                                              handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
-        } else {
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                
-                if error == nil {
-                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
-                } else {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }
-        }
-    }
-    
-    @objc func login(_ sender: AnyObject) {
+    private func showAlert(title: String,
+                           message: String,
+                           buttonTitle: String? = String.Localized.Common.ok) {
+        let alertView = AlertViewFactory.createAlertView(title: title,
+                                                         message: message,
+                                                         buttonTitle: buttonTitle)
         
-        if self.emailTextField.text == "" || self.passwordTextField.text == "" {
-            
-            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-            
+        present(alertView, animated: true, completion: nil)
+    }
+    
+    private func checkAfterAuth(_ error: Error?) {
+        if error == nil {
+            navigationController?.pushViewController(HomeViewController(), animated: true)
         } else {
-            
-            Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+            guard let errorMessage = error?.localizedDescription else { return }
+            showAlert(title: String.Localized.Common.error,
+                                 message: errorMessage)
+        }
+    }
+    
+    private func textFieldsAreValid() -> Bool {
+        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            showAlert(title: String.Localized.Common.error,
+                      message: String.Localized.WelcomeVC.enterEmailAndPassword)
+            return false
+        } else if !emailTextFieldValid() {
+            return false
+        } else if let text = passwordTextField.text, !text.isValidPassword() {
+            showAlert(title: String.Localized.Common.error,
+                      message: String.Localized.WelcomeVC.inavalidPassword)
+            return false
+        }
+        return true
+    }
+    
+    private func emailTextFieldValid() -> Bool {
+        if let text = emailTextField.text, !text.isValidEmail() {
+            showAlert(title: String.Localized.Common.error,
+                      message: String.Localized.WelcomeVC.invalidEmail)
+            return false
+        }
+        return true
+    }
+    
+    private func checkAuth(authFunc: AuthFunction) {
+         if textFieldsAreValid() {
+            guard let email = emailTextField.text,
+                    let password = passwordTextField.text else { return }
+            authFunc(email, password) { [weak self] (user, error) in
+                guard let strongSelf = self else { return }
+                strongSelf.checkAfterAuth(error)
+            }
+        }
+    }
+
+    @objc func createAccount() {
+        checkAuth(authFunc: Auth.auth().createUser)
+    }
+    
+    @objc func login() {
+        checkAuth(authFunc: Auth.auth().signIn(withEmail:password:completion:))
+    }
+    
+    @objc func facebookLogin() {
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"],
+                                  from: self) { [weak self] (_, error) in
+            guard let strongSelf = self else { return }
+            if let accessToken = FBSDKAccessToken.current(), error != nil {
+                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
                 
-                if error == nil {
-                    self.navigationController?.pushViewController(HomeViewController(), animated: true)
-                } else {
-                    
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
+                    strongSelf.checkAfterAuth(error)
                 }
+            } else {
+                guard let errorMessage = error?.localizedDescription else { return }
+                strongSelf.showAlert(title: String.Localized.Common.oops,
+                                     message: errorMessage)
             }
         }
     }
     
-    @objc func facebookLogin(sender: UIButton) {
-        let fbLoginManager = FBSDKLoginManager()
-        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let accessToken = FBSDKAccessToken.current() else {
-                print("Failed to get access token")
-                return
-            }
-            
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            
-            Auth.auth().signInAndRetrieveData(with: credential, completion: { (user, error) in
-                if let error = error {
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    return
-                }
-                
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-            })
-        }
-    }
-    
-    @objc func resetPassword(_ sender: AnyObject) {
+    @objc func resetPassword() {
         
-        if self.emailTextField.text == "" {
-            let alertController = UIAlertController(title: "Oops!", message: "Please enter an email.", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
-            
-        } else {
-            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: { (error) in
-                
+        if emailTextFieldValid() {
+            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!, completion: { [weak self] (error) in
+                guard let strongSelf = self else { return }
                 var title = ""
                 var message = ""
                 
                 if error != nil {
-                    title = "Error!"
-                    message = (error?.localizedDescription)!
+                    guard let errorMessage = error?.localizedDescription else { return }
+                    title = String.Localized.Common.error
+                    message = errorMessage
                 } else {
-                    title = "Success!"
-                    message = "Password reset email sent."
-                    self.emailTextField.text = ""
+                    title = String.Localized.Common.success
+                    message = String.Localized.WelcomeVC.passwordResetEmail
+                    strongSelf.emailTextField.text = ""
                 }
                 
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                strongSelf.showAlert(title: title, message: message)
             })
         }
     }
@@ -160,26 +137,27 @@ extension WelcomeViewController: Subviewable {
         navigationItem.setHidesBackButton(true, animated: true)
         
         view.backgroundColor = .white
-        view.accessibilityIdentifier = "WelcomeViewController"
+        view.accessibilityIdentifier = String.AccessID.welcomeVC
         
-        emailTextField.placeholder = "E-mail"
+        emailTextField.placeholder = String.Localized.WelcomeVC.email
         
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = String.Localized.WelcomeVC.password
+        passwordTextField.isSecureTextEntry = true
         
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
         loginButton.backgroundColor = .black
         
         facebookLoginButton.addTarget(self, action: #selector(facebookLogin), for: .touchUpInside)
-        facebookLoginButton.setTitle("Login with Facebook", for: .normal)
+        facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)
         
         signUpButton.addTarget(self, action: #selector(createAccount), for: .touchUpInside)
-        signUpButton.setTitle("Sign Up", for: .normal)
+        signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
         signUpButton.setTitleColor(.black, for: .normal)
         signUpButton.backgroundColor = .white
         
         resetPasswordButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
-        resetPasswordButton.setTitle("Reset Password", for: .normal)
+        resetPasswordButton.setTitle(String.Localized.WelcomeVC.resetPassword, for: .normal)
         resetPasswordButton.setTitleColor(.black, for: .normal)
         resetPasswordButton.backgroundColor = .white
     }
@@ -194,39 +172,41 @@ extension WelcomeViewController: Subviewable {
     }
     
     func setupAutoLayout() {
-        emailTextField.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant: Layout.spacer).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor,
+                                            constant: Layout.spacer).isActive = true
 
         if #available(iOS 11.0, *) {
-            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Layout.spacer).isActive = true
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                constant: Layout.spacer).isActive = true
         }
         
         emailTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         emailTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        emailTextField.addHeightConstraint(with: 44)
+        emailTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         passwordTextField.pinTop(to: emailTextField, anchor: .bottom, constant: Layout.spacer)
         passwordTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         passwordTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        passwordTextField.addHeightConstraint(with: 44)
+        passwordTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         loginButton.pinTop(to: passwordTextField, anchor: .bottom, constant: Layout.spacer)
         loginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        loginButton.addHeightConstraint(with: 44)
+        loginButton.addHeightConstraint(with: Layout.buttonHeight)
         
         facebookLoginButton.pinTop(to: loginButton, anchor: .bottom, constant: Layout.spacer)
         facebookLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        facebookLoginButton.addHeightConstraint(with: 44)
+        facebookLoginButton.addHeightConstraint(with: Layout.buttonHeight)
         
         signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
         signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        signUpButton.addHeightConstraint(with: 44)
+        signUpButton.addHeightConstraint(with: Layout.buttonHeight)
         
         resetPasswordButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.spacer)
         resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        resetPasswordButton.addHeightConstraint(with: 44)
+        resetPasswordButton.addHeightConstraint(with: Layout.buttonHeight)
     }
 }
