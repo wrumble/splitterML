@@ -35,11 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         if Auth.auth().currentUser != nil {
-            window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+            let homeViewModel = HomeViewModel()
+            let homeViewController = HomeViewController(viewModel: homeViewModel)
+            window?.rootViewController = UINavigationController(rootViewController: homeViewController)
         } else {
-            let viewModel = WelcomeViewModel()
-            let viewController = WelcomeViewController(viewModel: viewModel)
-            window?.rootViewController = UINavigationController(rootViewController: viewController)
+            let welcomeViewModel = WelcomeViewModel()
+            let welcomeViewController = WelcomeViewController(viewModel: welcomeViewModel)
+            window?.rootViewController = UINavigationController(rootViewController: welcomeViewController)
         }
     }
 }

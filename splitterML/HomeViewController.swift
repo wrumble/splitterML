@@ -7,26 +7,36 @@
 //
 
 import UIKit
-import Firebase
 
 class HomeViewController: UIViewController {
     
     private let logoutButton = UIButton()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let viewModel: HomeViewModel
+    
+    required init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        
+        bindViewModel()
         setup()
     }
     
-    @objc func logOut() {
-        if Auth.auth().currentUser != nil {
-            do {
-                try Auth.auth().signOut()
-                navigationController?.popViewController(animated: true)
-            } catch let error as NSError {
-                showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
-            }
-        }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func bindViewModel() {
+        viewModel.showAlert = showAlert
+        viewModel.popHomeViewController = popHomeViewController
+    }
+    
+    private func popHomeViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func logOut() {
+        viewModel.logOut()
     }
     
     private func showAlert(title: String, message: String) {

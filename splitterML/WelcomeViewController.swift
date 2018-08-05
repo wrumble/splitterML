@@ -25,16 +25,11 @@ class WelcomeViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         bindViewModel()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setup()
     }
     
     private func bindViewModel() {
@@ -72,7 +67,9 @@ class WelcomeViewController: UIViewController {
     }
     
     private func goToHomeViewController() {
-        navigationController?.pushViewController(HomeViewController(), animated: true)
+        let homeViewModel = HomeViewModel()
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
     
     private func emailTextFieldValid() -> Bool {
