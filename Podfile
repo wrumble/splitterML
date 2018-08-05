@@ -12,9 +12,7 @@ target 'splitterML' do
 end
 
 target 'splitterMLTests' do
-    inherit! :search_paths
 end
 
 target 'splitterMLUITests' do
-    inherit! :search_paths
 end
