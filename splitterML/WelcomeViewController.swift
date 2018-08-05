@@ -138,7 +138,7 @@ extension WelcomeViewController: Subviewable {
         
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
-        
+
         emailTextField.placeholder = String.Localized.WelcomeVC.email
         
         passwordTextField.placeholder = String.Localized.WelcomeVC.password

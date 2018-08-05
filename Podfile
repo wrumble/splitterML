@@ -9,17 +9,12 @@ target 'splitterML' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'FBSDKLoginKit'
-  
+end
 
-  target 'splitterMLTests' do
+target 'splitterMLTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
+end
 
-  target 'splitterMLUITests' do
+target 'splitterMLUITests' do
     inherit! :search_paths
-    pod 'Firebase/Core'
-    pod 'Firebase/Auth'
-    pod 'FBSDKLoginKit'
-  end
 end
