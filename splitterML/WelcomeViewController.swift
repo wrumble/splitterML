@@ -9,8 +9,8 @@
 import UIKit
 import FBSDKLoginKit
 
-class WelcomeViewController: UIViewController {
-        
+class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
+
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
@@ -43,11 +43,8 @@ class WelcomeViewController: UIViewController {
         emailTextField.text = ""
     }
     
-    private func showAlert(title: String,
-                           message: String) {
-        let alertView = AlertViewFactory.createAlertView(title: title,
-                                                         message: message)
-        
+    private func showAlert(title: String, message: String) {
+        let alertView = AlertViewFactory.createAlertView(title: title, message: message)
         present(alertView, animated: true, completion: nil)
     }
     
@@ -93,7 +90,7 @@ class WelcomeViewController: UIViewController {
         viewModel.loginToFirebase(email: email, password: password)
     }
     
-    @objc private func loginWithFacebook() {
+    private func loginWithFacebook() {
         viewModel.loginWithFacebook(viewController: self)
     }
     
@@ -122,8 +119,9 @@ extension WelcomeViewController: Subviewable {
         loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
         loginButton.backgroundColor = .black
         
-        facebookLoginButton.addTarget(self, action: #selector(loginWithFacebook), for: .touchUpInside)
         facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)
+        facebookLoginButton.readPermissions = ["public_profile", "email"]
+        facebookLoginButton.delegate = self
         
         signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
@@ -150,7 +148,7 @@ extension WelcomeViewController: Subviewable {
                                             constant: Layout.spacer).isActive = true
 
         if #available(iOS 11.0, *) {
-            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                 constant: Layout.spacer).isActive = true
         }
         
@@ -182,5 +180,16 @@ extension WelcomeViewController: Subviewable {
         resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         resetPasswordButton.addHeightConstraint(with: Layout.buttonHeight)
+    }
+}
+
+extension WelcomeViewController {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        switch result {
+        case .none: showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
+        case .some: loginWithFacebook()
+        }
     }
 }

@@ -40,18 +40,11 @@ class WelcomeViewModel {
     }
     
     func loginWithFacebook(viewController: WelcomeViewController) {
-        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"],
-                                  from: viewController) { [weak self] (_, error) in
-            guard let strongSelf = self else { return }
-            if let accessToken = FBSDKAccessToken.current(), error != nil {
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                
-                Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
-                    strongSelf.checkAfterAuth(error)
-                }
-            } else {
-                guard let errorMessage = error?.localizedDescription else { return }
-                strongSelf.showAlert?(String.Localized.Common.oops, errorMessage)
+        if let accessToken = FBSDKAccessToken.current()  {
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
+                self.checkAfterAuth(error)
             }
         }
     }
