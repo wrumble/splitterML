@@ -22,4 +22,6 @@ class splitterMLUITests: XCTestCase {
 
         XCTAssertTrue(welcomeViewController.isHittable)
     }
+    
+    gfxgfhjkhgfjkljhg
 }
