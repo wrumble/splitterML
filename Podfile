@@ -15,6 +15,8 @@ target 'splitterML' do
 end
 
 target 'SplitterMLTests' do
+    inherit! :search_paths
+    pod 'Firebase'
 end
 
 target 'SplitterMLUITests' do

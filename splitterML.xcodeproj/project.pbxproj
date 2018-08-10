@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C1EEF06AF4CDA64D315A86D /* libPods-splitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFFD50FA89AA19757277955 /* libPods-splitterMLUITests.a */; };
-		6BDC8C8171BF5F4B43DB18B0 /* libPods-SplitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362C746047A4029B74A30E97 /* libPods-SplitterMLTests.a */; };
 		873C961420F9775C000B0F7C /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C961320F9775C000B0F7C /* UIView+extension.swift */; };
 		873C961720F982F2000B0F7C /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C961620F982F2000B0F7C /* Layout.swift */; };
 		873C961920F99E8E000B0F7C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C961820F99E8E000B0F7C /* HomeViewController.swift */; };
@@ -109,7 +107,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3CABC18C47EA7A6918CF88D /* libPods-splitterMLTests.a in Frameworks */,
-				6BDC8C8171BF5F4B43DB18B0 /* libPods-SplitterMLTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1EEF06AF4CDA64D315A86D /* libPods-splitterMLUITests.a in Frameworks */,
 				E5313F94826AA86D57C0E1D9 /* libPods-SplitterMLUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,8 +451,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-f0850809/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
