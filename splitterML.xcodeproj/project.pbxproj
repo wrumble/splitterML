@@ -18,6 +18,8 @@
 		87801D9A20F5FE2700AA2AAC /* SplitterMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D9920F5FE2700AA2AAC /* SplitterMLTests.swift */; };
 		87801DA520F5FE2700AA2AAC /* SplitterMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */; };
 		87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DB620F6433900AA2AAC /* Subviewable.swift */; };
+		87C46037211DDF4200F38B39 /* libPods-SplitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */; };
+		87C46039211DDF5100F38B39 /* libPods-SplitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */; };
 		87DA5E96211722B800545E53 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5E95211722B800545E53 /* AlertView.swift */; };
 		87DA5E98211722FB00545E53 /* String+Localized+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5E97211722FB00545E53 /* String+Localized+Extension.swift */; };
 		87DA5E9B2117243A00545E53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87DA5E992117243A00545E53 /* Localizable.strings */; };
@@ -28,8 +30,6 @@
 		87DA5EA7211788E500545E53 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5EA6211788E500545E53 /* WelcomeViewModel.swift */; };
 		87DA5EAA21179C6800545E53 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5EA921179C6800545E53 /* HomeViewModel.swift */; };
 		A054F6B980785E1D8A411DE0 /* Pods_splitterML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724BACBE073E7A543E1E5EE2 /* Pods_splitterML.framework */; };
-		E5313F94826AA86D57C0E1D9 /* libPods-SplitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5402F425229C9AA4E1AC3BD5 /* libPods-SplitterMLUITests.a */; };
-		F3CABC18C47EA7A6918CF88D /* libPods-splitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E95397071A4615B5FCE2B07F /* libPods-splitterMLTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +75,9 @@
 		87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterMLUITests.swift; sourceTree = "<group>"; };
 		87801DA620F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87801DB620F6433900AA2AAC /* Subviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subviewable.swift; sourceTree = "<group>"; };
+		87C46034211DDF3600F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DA5E95211722B800545E53 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		87DA5E97211722FB00545E53 /* String+Localized+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized+Extension.swift"; sourceTree = "<group>"; };
 		87DA5E9A2117243A00545E53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -106,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3CABC18C47EA7A6918CF88D /* libPods-splitterMLTests.a in Frameworks */,
+				87C46037211DDF4200F38B39 /* libPods-SplitterMLTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5313F94826AA86D57C0E1D9 /* libPods-SplitterMLUITests.a in Frameworks */,
+				87C46039211DDF5100F38B39 /* libPods-SplitterMLUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +281,9 @@
 		EB12D6072CC8C78DE1521A85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */,
+				87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */,
+				87C46034211DDF3600F38B39 /* libPods-SplitterMLTests.a */,
 				724BACBE073E7A543E1E5EE2 /* Pods_splitterML.framework */,
 				E95397071A4615B5FCE2B07F /* libPods-splitterMLTests.a */,
 				ABFFD50FA89AA19757277955 /* libPods-splitterMLUITests.a */,
@@ -733,7 +739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
-				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = splitterML/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -753,7 +759,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
-				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = splitterML/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
