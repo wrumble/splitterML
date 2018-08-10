@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,15 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
         setRootViewController()
         
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         
-        return handled
+        let facebookHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let googleHandled = GIDSignIn.sharedInstance().handle(url,
+                                                              sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                              annotation: [:])
+        
+        
+        return facebookHandled || googleHandled == true ? true : false
     }
     
     private func setRootViewController() {

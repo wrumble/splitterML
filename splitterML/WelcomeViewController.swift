@@ -8,13 +8,15 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
 
-class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
+class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
 
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
     private let facebookLoginButton = FBSDKLoginButton()
+    private let googleLoginButton = GIDSignInButton()
     private let signUpButton = UIButton()
     private let resetPasswordButton = UIButton()
 
@@ -49,18 +51,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     private func textFieldsAreValid() -> Bool {
-        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
-            showAlert(title: String.Localized.Common.error,
-                      message: String.Localized.WelcomeVC.enterEmailAndPassword)
-            return false
-        } else if !emailTextFieldValid() {
-            return false
-        } else if let text = passwordTextField.text, !text.isValidPassword() {
-            showAlert(title: String.Localized.Common.error,
-                      message: String.Localized.WelcomeVC.inavalidPassword)
-            return false
+        if textFieldsAreNotEmpty() && emailTextFieldValid() && passwordTextFieldValid() {
+            return true
         }
-        return true
+        return false
     }
     
     private func goToHomeViewController() {
@@ -69,10 +63,28 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
+    private func textFieldsAreNotEmpty() -> Bool {
+        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            showAlert(title: String.Localized.Common.error,
+                      message: String.Localized.WelcomeVC.enterEmailAndPassword)
+            return false
+        }
+        return true
+    }
+    
     private func emailTextFieldValid() -> Bool {
         if let text = emailTextField.text, !text.isValidEmail() {
             showAlert(title: String.Localized.Common.error,
                       message: String.Localized.WelcomeVC.invalidEmail)
+            return false
+        }
+        return true
+    }
+    
+    private func passwordTextFieldValid() -> Bool {
+        if let text = passwordTextField.text, !text.isValidPassword() {
+            showAlert(title: String.Localized.Common.error,
+                      message: String.Localized.WelcomeVC.inavalidPassword)
             return false
         }
         return true
@@ -91,7 +103,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     private func loginWithFacebook() {
-        viewModel.loginWithFacebook(viewController: self)
+        viewModel.loginWithFacebook()
     }
     
     @objc private func resetPassword() {
@@ -109,6 +121,8 @@ extension WelcomeViewController: Subviewable {
         
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
 
         emailTextField.placeholder = String.Localized.WelcomeVC.email
         
@@ -139,6 +153,7 @@ extension WelcomeViewController: Subviewable {
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(facebookLoginButton)
+        view.addSubview(googleLoginButton)
         view.addSubview(signUpButton)
         view.addSubview(resetPasswordButton)
     }
@@ -171,6 +186,11 @@ extension WelcomeViewController: Subviewable {
         facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         facebookLoginButton.addHeightConstraint(with: Layout.buttonHeight)
         
+        googleLoginButton.pinTop(to: facebookLoginButton, anchor: .bottom, constant: Layout.spacer)
+        googleLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
+        googleLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        googleLoginButton.addHeightConstraint(with: Layout.buttonHeight)
+        
         signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
         signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
@@ -190,6 +210,18 @@ extension WelcomeViewController {
         switch result {
         case .none: showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
         case .some: loginWithFacebook()
+        }
+    }
+}
+
+extension WelcomeViewController {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        GIDSignIn.sharedInstance().signIn()
+        if error != nil {
+            viewModel.signInWithGoogle(user: user)
+        } else {
+            guard let error = error?.localizedDescription else { return }
+            showAlert(title: String.Localized.Common.oops, message: error)
         }
     }
 }

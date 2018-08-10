@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FBSDKLoginKit
+import GoogleSignIn
 
 class WelcomeViewModel {
     
@@ -39,13 +40,23 @@ class WelcomeViewModel {
         })
     }
     
-    func loginWithFacebook(viewController: WelcomeViewController) {
+    func loginWithFacebook() {
         if let accessToken = FBSDKAccessToken.current()  {
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            
-            Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
-                self.checkAfterAuth(error)
-            }
+            let credentials = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            signInAndRetrieveData(credentials: credentials)
+        }
+    }
+    
+    func signInWithGoogle(user: GIDGoogleUser) {
+        guard let authentication = user.authentication else { return }
+        let credentials = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        signInAndRetrieveData(credentials: credentials)
+    }
+    
+    func signInAndRetrieveData(credentials: AuthCredential) {
+        Auth.auth().signInAndRetrieveData(with: credentials) { (_, error) in
+            self.checkAfterAuth(error)
         }
     }
     

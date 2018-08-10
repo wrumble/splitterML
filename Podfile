@@ -10,6 +10,7 @@ target 'splitterML' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
 end
 
 target 'splitterMLTests' do
