@@ -12,3 +12,13 @@ https://trello.com/b/HuqhF9Q7/splitterml
 Emily Alpert - https://medium.com/@emily.alpert/the-splitter-dining-experience-c80021e70c7a
 
 Sofia Egert - https://medium.com/@sofia.egert/splitting-and-sensibility-bb1fb5d58d99
+
+# Branching
+
+When creating a branch use the following format
+
+```git checkout -b feature/YOUR INITIALS/Title-of-feature-ticket-in-trello```
+
+```git checkout -b subtask/YOUR INITIALS/Title-of-subtask-ticket-in-trello```
+
+```git checkout -b bug/YOUR INITIALS/Title-of-bug-ticket-in-trello```
