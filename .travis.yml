@@ -16,4 +16,3 @@ podfile: Podfile
 
 script:
   - xcodebuild -workspace splitterML.xcworkspace -scheme splitterML -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5s' | build | test | xcpretty -c
-  - swiftlint
