@@ -117,8 +117,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSign
 extension WelcomeViewController: Subviewable {
     
     func setupSubviews() {
-        navigationItem.setHidesBackButton(true, animated: true)
+        title = String.Localized.Common.splitter
         
+        navigationItem.setHidesBackButton(true, animated: true)
+
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
         
@@ -131,6 +133,7 @@ extension WelcomeViewController: Subviewable {
         
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
+        loginButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         loginButton.backgroundColor = .black
         
         facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)

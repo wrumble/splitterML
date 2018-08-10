@@ -26,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setRootViewController()
         
+        let titleAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,
+                               .font: Font.fancyStyle.size(.navBarTitleSize)]
+        
+        UINavigationBar.appearance().barTintColor = Palette.mainGreen
+        UINavigationBar.appearance().titleTextAttributes = titleAttributes
+        
+        UITextField.appearance().font = Font.printStyle.size(.textFieldPlaceHolderSize)
+        
         return true
     }
     

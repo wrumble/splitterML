@@ -18,6 +18,11 @@
 		87801D9A20F5FE2700AA2AAC /* SplitterMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D9920F5FE2700AA2AAC /* SplitterMLTests.swift */; };
 		87801DA520F5FE2700AA2AAC /* SplitterMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */; };
 		87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DB620F6433900AA2AAC /* Subviewable.swift */; };
+		87BE8066211E30B7000B3163 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8065211E30B7000B3163 /* Palette.swift */; };
+		87BE8068211E319F000B3163 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8067211E319F000B3163 /* UIColor+Extension.swift */; };
+		87BE806B211E355E000B3163 /* SignPainter HouseScript Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */; };
+		87BE806E211E3678000B3163 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE806D211E3678000B3163 /* Fonts.swift */; };
+		87BE8070211E3B1F000B3163 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */; };
 		87C46037211DDF4200F38B39 /* libPods-SplitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */; };
 		87C46039211DDF5100F38B39 /* libPods-SplitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */; };
 		87DA5E96211722B800545E53 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5E95211722B800545E53 /* AlertView.swift */; };
@@ -75,6 +80,11 @@
 		87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterMLUITests.swift; sourceTree = "<group>"; };
 		87801DA620F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87801DB620F6433900AA2AAC /* Subviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subviewable.swift; sourceTree = "<group>"; };
+		87BE8065211E30B7000B3163 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		87BE8067211E319F000B3163 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignPainter HouseScript Regular.ttf"; sourceTree = "<group>"; };
+		87BE806D211E3678000B3163 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		87C46034211DDF3600F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +158,7 @@
 				87DA5E97211722FB00545E53 /* String+Localized+Extension.swift */,
 				87DA5E9D2117678E00545E53 /* String+AccesID+Extension.swift */,
 				87DA5E9F21176AA200545E53 /* String+Extension.swift */,
+				87BE8067211E319F000B3163 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -157,6 +168,8 @@
 			children = (
 				873C961620F982F2000B0F7C /* Layout.swift */,
 				87DA5EA121176B0C00545E53 /* Regex.swift */,
+				87BE8065211E30B7000B3163 /* Palette.swift */,
+				87BE806D211E3678000B3163 /* Fonts.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -215,6 +228,7 @@
 		87801DB220F642B500AA2AAC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				87BE8069211E3548000B3163 /* Fonts */,
 				87801D8420F5FE2500AA2AAC /* AppDelegate.swift */,
 				87801D8B20F5FE2700AA2AAC /* Assets.xcassets */,
 				87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */,
@@ -250,6 +264,15 @@
 				87801DB620F6433900AA2AAC /* Subviewable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		87BE8069211E3548000B3163 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */,
+				87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		87DA5E94211722A800545E53 /* Views */ = {
@@ -404,8 +427,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				87801D8F20F5FE2700AA2AAC /* LaunchScreen.storyboard in Resources */,
+				87BE806B211E355E000B3163 /* SignPainter HouseScript Regular.ttf in Resources */,
 				87DA5E9B2117243A00545E53 /* Localizable.strings in Resources */,
 				87801D8C20F5FE2700AA2AAC /* Assets.xcassets in Resources */,
+				87BE8070211E3B1F000B3163 /* SF-Pro-Display-Regular.otf in Resources */,
 				8751D0D120F969D800382172 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,13 +580,16 @@
 				87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */,
 				87DA5E96211722B800545E53 /* AlertView.swift in Sources */,
 				873C961720F982F2000B0F7C /* Layout.swift in Sources */,
+				87BE806E211E3678000B3163 /* Fonts.swift in Sources */,
 				87DA5E9E2117678E00545E53 /* String+AccesID+Extension.swift in Sources */,
 				873C961420F9775C000B0F7C /* UIView+extension.swift in Sources */,
 				87DA5EAA21179C6800545E53 /* HomeViewModel.swift in Sources */,
+				87BE8068211E319F000B3163 /* UIColor+Extension.swift in Sources */,
 				87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */,
 				87DA5EA021176AA200545E53 /* String+Extension.swift in Sources */,
 				873C961920F99E8E000B0F7C /* HomeViewController.swift in Sources */,
 				87DA5EA221176B0C00545E53 /* Regex.swift in Sources */,
+				87BE8066211E30B7000B3163 /* Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
