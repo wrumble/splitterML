@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -28,13 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         
         let facebookHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let googleOptions = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let googleHandled = GIDSignIn.sharedInstance().handle(url,
-                                                              sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                              sourceApplication: googleOptions,
                                                               annotation: [:])
-        
         
         return facebookHandled || googleHandled == true ? true : false
     }
@@ -53,4 +56,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-

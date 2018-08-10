@@ -1,6 +1,6 @@
 //
-//  splitterMLUITests.swift
-//  splitterMLUITests
+//  SplitterMLUITests.swift
+//  SplitterMLUITests
 //
 //  Created by Wayne Rumble on 11/07/2018.
 //  Copyright © 2018 Wayne Rumble. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class splitterMLUITests: XCTestCase {
+class SplitterMLUITests: XCTestCase {
     
     private let app = XCUIApplication()
     

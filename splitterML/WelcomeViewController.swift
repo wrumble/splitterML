@@ -206,7 +206,9 @@ extension WelcomeViewController: Subviewable {
 extension WelcomeViewController {
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!,
+                     didCompleteWith result: FBSDKLoginManagerLoginResult!,
+                     error: Error!) {
         switch result {
         case .none: showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
         case .some: loginWithFacebook()

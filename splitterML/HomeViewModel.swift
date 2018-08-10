@@ -13,8 +13,8 @@ import FBSDKLoginKit
 
 class HomeViewModel {
  
-    var popHomeViewController: (() -> ())?
-    var showAlert: ((String, String) -> ())?
+    var popHomeViewController: (() -> Void)?
+    var showAlert: ((String, String) -> Void)?
     
     func logOut() {
         if Auth.auth().currentUser != nil {

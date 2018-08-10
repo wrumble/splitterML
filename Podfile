@@ -14,8 +14,8 @@ target 'splitterML' do
   pod 'SwiftLint'
 end
 
-target 'splitterMLTests' do
+target 'SplitterMLTests' do
 end
 
-target 'splitterMLUITests' do
+target 'SplitterMLUITests' do
 end

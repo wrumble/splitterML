@@ -14,6 +14,7 @@ extension String {
         return Bundle.main.localizedString(forKey: self, value: "", table: nil)
     }
     
+    // swiftlint:disable nesting
     enum Localized {
         enum Common {
             static let cancel = "cancel".localized
@@ -41,4 +42,5 @@ extension String {
             static let logout = "Logout".localized
         }
     }
+    // swiftlint:enable nesting
 }

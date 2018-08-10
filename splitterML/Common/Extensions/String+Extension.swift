@@ -10,7 +10,7 @@ import UIKit
 
 extension String {
     func isValidEmail() -> Bool {
-        //`try!` will always succeed because the pattern is valid
+        // swiftlint:disable force_try
         let regex = try! NSRegularExpression(pattern: Regex.email, options: .caseInsensitive)
         return regex.firstMatch(in: self,
                                 options: [],
@@ -25,4 +25,5 @@ extension String {
                                 range: NSRange(location: 0,
                                                length: count)) != nil
     }
+    // swiftlint:enable force_try
 }

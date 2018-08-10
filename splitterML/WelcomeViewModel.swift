@@ -13,12 +13,12 @@ import GoogleSignIn
 
 class WelcomeViewModel {
     
-    typealias AuthFunction = (String, String, AuthDataResultCallback?) -> ()
+    typealias AuthFunction = (String, String, AuthDataResultCallback?) -> Void
     
-    var showAlert: ((String, String) -> ())?
-    var resetEmailTextField: (() -> ())?
+    var showAlert: ((String, String) -> Void)?
+    var resetEmailTextField: (() -> Void)?
     var textFieldsAreValid: (() -> (Bool))?
-    var goToHomeViewController: (() -> ())?
+    var goToHomeViewController: (() -> Void)?
     
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { [weak self] (error) in
@@ -41,7 +41,7 @@ class WelcomeViewModel {
     }
     
     func loginWithFacebook() {
-        if let accessToken = FBSDKAccessToken.current()  {
+        if let accessToken = FBSDKAccessToken.current() {
             let credentials = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             signInAndRetrieveData(credentials: credentials)
         }
@@ -75,7 +75,7 @@ class WelcomeViewModel {
     private func checkAuth(authFunction: AuthFunction, email: String, password: String) {
         guard let textFieldsAreValid = textFieldsAreValid?() else { return }
         if textFieldsAreValid {
-            authFunction(email, password) { [weak self] (user, error) in
+            authFunction(email, password) { [weak self] (_, error) in
                 guard let strongSelf = self else { return }
                 strongSelf.checkAfterAuth(error)
             }

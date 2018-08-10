@@ -21,7 +21,10 @@ class AlertViewFactory {
         return alertView
     }
     
-    static func createAlertView(title: String?, message: String?, actions: [UIAlertAction], preferredStyle: UIAlertControllerStyle = .alert) -> UIAlertController {
+    static func createAlertView(title: String?,
+                                message: String?,
+                                actions: [UIAlertAction],
+                                preferredStyle: UIAlertControllerStyle = .alert) -> UIAlertController {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         
         actions.forEach { alertView.addAction($0) }
@@ -39,4 +42,3 @@ extension UIAlertAction {
         return UIAlertAction(title: String.Localized.Common.ok, style: .cancel)
     }
 }
-

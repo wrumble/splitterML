@@ -1,6 +1,6 @@
 //
-//  splitterMLTests.swift
-//  splitterMLTests
+//  SplitterMLTests.swift
+//  SplitterMLTests
 //
 //  Created by Wayne Rumble on 11/07/2018.
 //  Copyright © 2018 Wayne Rumble. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import splitterML
 
-class splitterMLTests: XCTestCase {
+class SplitterMLTests: XCTestCase {
     
     func testExample() {
         XCTAssertTrue(true)
