@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
 
-class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate{
 
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
@@ -117,6 +117,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSign
 extension WelcomeViewController: Subviewable {
     
     func setupSubviews() {
+        setupHideKeyboardOnTap()
         title = String.Localized.Common.splitter
         
         navigationItem.setHidesBackButton(true, animated: true)
@@ -124,8 +125,6 @@ extension WelcomeViewController: Subviewable {
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-
         emailTextField.placeholder = String.Localized.WelcomeVC.email
         
         passwordTextField.placeholder = String.Localized.WelcomeVC.password
@@ -136,17 +135,22 @@ extension WelcomeViewController: Subviewable {
         loginButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         loginButton.backgroundColor = .black
         
-        facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)
+        let facebookButtonTitleText = NSAttributedString(string: String.Localized.WelcomeVC.loginWithFB)
+        facebookLoginButton.setAttributedTitle(facebookButtonTitleText, for: .normal)
         facebookLoginButton.readPermissions = ["public_profile", "email"]
         facebookLoginButton.delegate = self
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
         signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
+        signUpButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         signUpButton.setTitleColor(.black, for: .normal)
         signUpButton.backgroundColor = .white
         
         resetPasswordButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         resetPasswordButton.setTitle(String.Localized.WelcomeVC.resetPassword, for: .normal)
+        resetPasswordButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         resetPasswordButton.setTitleColor(.black, for: .normal)
         resetPasswordButton.backgroundColor = .white
     }
@@ -170,39 +174,39 @@ extension WelcomeViewController: Subviewable {
                                                 constant: Layout.spacer).isActive = true
         }
         
-        emailTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        emailTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        emailTextField.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        emailTextField.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         emailTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         passwordTextField.pinTop(to: emailTextField, anchor: .bottom, constant: Layout.spacer)
-        passwordTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        passwordTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        passwordTextField.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        passwordTextField.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         passwordTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         loginButton.pinTop(to: passwordTextField, anchor: .bottom, constant: Layout.spacer)
-        loginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        loginButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        loginButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         loginButton.addHeightConstraint(with: Layout.buttonHeight)
         
         facebookLoginButton.pinTop(to: loginButton, anchor: .bottom, constant: Layout.spacer)
-        facebookLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        facebookLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         facebookLoginButton.addHeightConstraint(with: Layout.buttonHeight)
         
         googleLoginButton.pinTop(to: facebookLoginButton, anchor: .bottom, constant: Layout.spacer)
-        googleLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        googleLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        googleLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        googleLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         googleLoginButton.addHeightConstraint(with: Layout.buttonHeight)
         
-        signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
-        signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        signUpButton.addHeightConstraint(with: Layout.buttonHeight)
+        signUpButton.pinBottom(to: resetPasswordButton, anchor: .top)
+        signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
+        signUpButton.addHeightConstraint(with: Layout.textButtonHeight)
         
-        resetPasswordButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.spacer)
-        resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        resetPasswordButton.addHeightConstraint(with: Layout.buttonHeight)
+        resetPasswordButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.margin)
+        resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
+        resetPasswordButton.addHeightConstraint(with: Layout.textButtonHeight)
     }
 }
 

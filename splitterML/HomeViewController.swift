@@ -50,6 +50,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: Subviewable {
     func setupSubviews() {
+        
+        title = String.Localized.Common.splitter
+        
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = Palette.mainGreen
         

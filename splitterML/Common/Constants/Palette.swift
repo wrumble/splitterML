@@ -11,4 +11,3 @@ import UIKit
 enum Palette {
     static let mainGreen = UIColor(hexString: "#355c57")
 }
-

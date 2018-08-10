@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = Palette.mainGreen
         UINavigationBar.appearance().titleTextAttributes = titleAttributes
+        application.statusBarStyle = .lightContent
         
         UITextField.appearance().font = Font.printStyle.size(.textFieldPlaceHolderSize)
         

@@ -18,7 +18,7 @@ enum Font: String {
 }
 
 extension CGFloat {
-    static let navBarTitleSize: CGFloat = 100
-    static let buttonTitleSize: CGFloat = 30
-    static let textFieldPlaceHolderSize: CGFloat = 20
+    static let navBarTitleSize: CGFloat = 45
+    static let buttonTitleSize: CGFloat = 17
+    static let textFieldPlaceHolderSize: CGFloat = 17
 }
