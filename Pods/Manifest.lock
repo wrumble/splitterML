@@ -56,12 +56,14 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SwiftLint (0.26.0)
 
 DEPENDENCIES:
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - GTMOAuth2
     - GTMSessionFetcher
     - nanopb
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -93,7 +96,8 @@ SPEC CHECKSUMS:
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
 
-PODFILE CHECKSUM: bdef8cfc61ad11570aa8eb1ff0a5f7ce981bc002
+PODFILE CHECKSUM: 0393767c61925bdd71ec0a9c685e772b51dc1049
 
 COCOAPODS: 1.5.3
