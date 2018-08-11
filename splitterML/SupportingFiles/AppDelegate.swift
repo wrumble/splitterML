@@ -55,9 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         if Auth.auth().currentUser != nil {
-            let user = User(name: Auth.auth().currentUser?.displayName ?? "Wayne Rumble")
             let homeViewModel = HomeViewModel()
-            let homeViewController = HomeViewController(viewModel: homeViewModel, user: user)
+            let homeViewController = HomeViewController(viewModel: homeViewModel)
             window?.rootViewController = UINavigationController(rootViewController: homeViewController)
         } else {
             let welcomeViewModel = WelcomeViewModel()

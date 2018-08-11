@@ -15,6 +15,19 @@ class HomeViewModel {
  
     var popHomeViewController: (() -> Void)?
     var showAlert: ((String, String) -> Void)?
+    var setNavBarTitle: ((String) -> Void)?
+    
+    init() {
+        getUserData()
+    }
+    
+    private func getUserData() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        FirebaseHelper().getUserData(id: userId, completion: { user in
+            guard let user = user else { return }
+            self.setNavBarTitle?(user.email)
+        })
+    }
     
     func logOut() {
         if Auth.auth().currentUser != nil {

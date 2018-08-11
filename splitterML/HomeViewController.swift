@@ -14,11 +14,9 @@ class HomeViewController: UIViewController {
     private let bottomBar = UIStackView()
     
     private let viewModel: HomeViewModel
-    private let user: User
     
-    required init(viewModel: HomeViewModel, user: User) {
+    required init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
-        self.user = user
         super.init(nibName: nil, bundle: nil)
         
         bindViewModel()
@@ -32,6 +30,7 @@ class HomeViewController: UIViewController {
     private func bindViewModel() {
         viewModel.showAlert = showAlert
         viewModel.popHomeViewController = popHomeViewController
+        viewModel.setNavBarTitle = setNavBarTitle
     }
     
     private func popHomeViewController() {
@@ -49,13 +48,15 @@ class HomeViewController: UIViewController {
         present(alertView, animated: true, completion: nil)
         
     }
+    
+    private func setNavBarTitle(_ userName: String) {
+        title = userName
+    }
 }
 
 extension HomeViewController: Subviewable {
     func setupSubviews() {
-        
-        title = user.name
-        
+                
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = Palette.mainGreen
         

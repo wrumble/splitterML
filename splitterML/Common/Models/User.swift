@@ -9,9 +9,11 @@
 import UIKit
 
 struct User {
-    var name: String
+    var id: String
+    var email: String
     
-    init(name: String) {
-        self.name = name
+    init(id: String, email: String) {
+        self.id = id
+        self.email = email
     }
 }
