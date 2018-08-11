@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import Firebase
+
+class Firebase {
+    private let databaseReference = Database.database().reference().child("Bills")
+    
+}

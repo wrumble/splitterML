@@ -6,4 +6,12 @@
 //  Copyright © 2018 Wayne Rumble. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct User {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}

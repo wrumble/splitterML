@@ -11,11 +11,14 @@ import UIKit
 class HomeViewController: UIViewController {
     
     private let logoutButton = UIButton()
+    private let bottomBar = UIStackView()
     
     private let viewModel: HomeViewModel
+    private let user: User
     
-    required init(viewModel: HomeViewModel) {
+    required init(viewModel: HomeViewModel, user: User) {
         self.viewModel = viewModel
+        self.user = user
         super.init(nibName: nil, bundle: nil)
         
         bindViewModel()
@@ -51,7 +54,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: Subviewable {
     func setupSubviews() {
         
-        title = String.Localized.Common.splitter
+        title = user.name
         
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = Palette.mainGreen
@@ -61,17 +64,24 @@ extension HomeViewController: Subviewable {
         
         logoutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         logoutButton.setTitle(String.Localized.HomeVC.logout, for: .normal)
-        logoutButton.backgroundColor = .black
+        logoutButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
+        logoutButton.backgroundColor = .clear
+        
+        bottomBar.addBackgroundColor(Palette.mainGreen)
+        bottomBar.axis = .horizontal
+        bottomBar.distribution = .equalSpacing
+        bottomBar.spacing = Layout.spacer
     }
     
     func setupHierarchy() {
-        view.addSubview(logoutButton)
+        view.addSubview(bottomBar)
+        bottomBar.addArrangedSubview(logoutButton)
     }
     
     func setupAutoLayout() {
-        logoutButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.spacer)
-        logoutButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        logoutButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        logoutButton.addHeightConstraint(with: Layout.buttonHeight)
+        bottomBar.pinBottom(to: view, anchor: .bottom)
+        bottomBar.pinLeft(to: view, anchor: .left)
+        bottomBar.pinRight(to: view, anchor: .right)
+        bottomBar.addHeightConstraint(with: Layout.buttonHeight)
     }
 }

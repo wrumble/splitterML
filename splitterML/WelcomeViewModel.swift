@@ -18,7 +18,7 @@ class WelcomeViewModel {
     var showAlert: ((String, String) -> Void)?
     var resetEmailTextField: (() -> Void)?
     var textFieldsAreValid: (() -> (Bool))?
-    var goToHomeViewController: (() -> Void)?
+    var goToHomeViewController: ((User) -> Void)?
     
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { [weak self] (error) in
@@ -55,8 +55,8 @@ class WelcomeViewModel {
     }
     
     func signInAndRetrieveData(credentials: AuthCredential) {
-        Auth.auth().signInAndRetrieveData(with: credentials) { (_, error) in
-            self.checkAfterAuth(error)
+        Auth.auth().signInAndRetrieveData(with: credentials) { (userData , error) in
+            self.checkAfterAuth(userData: userData, error: error)
         }
     }
     
@@ -75,16 +75,18 @@ class WelcomeViewModel {
     private func checkAuth(authFunction: AuthFunction, email: String, password: String) {
         guard let textFieldsAreValid = textFieldsAreValid?() else { return }
         if textFieldsAreValid {
-            authFunction(email, password) { [weak self] (_, error) in
+            authFunction(email, password) { [weak self] (userData, error) in
                 guard let strongSelf = self else { return }
-                strongSelf.checkAfterAuth(error)
+                strongSelf.checkAfterAuth(userData: userData, error: error)
             }
         }
     }
     
-    private func checkAfterAuth(_ error: Error?) {
-        if error == nil {
-            goToHomeViewController?()
+    private func checkAfterAuth(userData: AuthDataResult?, error: Error?) {
+        if error == nil && userData != nil {
+            let user = User(name: (userData?.user.displayName)!)
+
+            goToHomeViewController?(user)
         } else {
             guard let errorMessage = error?.localizedDescription else { return }
             showAlert?(String.Localized.Common.error, errorMessage)

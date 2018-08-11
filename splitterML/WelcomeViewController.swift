@@ -57,9 +57,9 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSign
         return false
     }
     
-    private func goToHomeViewController() {
+    private func goToHomeViewController(user: User) {
         let homeViewModel = HomeViewModel()
-        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        let homeViewController = HomeViewController(viewModel: homeViewModel, user: user)
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
