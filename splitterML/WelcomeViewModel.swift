@@ -18,7 +18,7 @@ class WelcomeViewModel {
     var showAlert: ((String, String) -> Void)?
     var resetEmailTextField: (() -> Void)?
     var textFieldsAreValid: (() -> (Bool))?
-    var goToHomeViewController: ((User) -> Void)?
+    var goToHomeViewController: (() -> Void)?
     
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { [weak self] (error) in
@@ -84,12 +84,24 @@ class WelcomeViewModel {
     
     private func checkAfterAuth(userData: AuthDataResult?, error: Error?) {
         if error == nil && userData != nil {
-            let user = User(name: (userData?.user.displayName)!)
-
-            goToHomeViewController?(user)
+            guard let id = userData?.user.uid,
+                    let email = userData?.user.email else { return }
+            let user = User(id: id, email: email)
+            self.addNewUserToDatabase(user: user)
         } else {
             guard let errorMessage = error?.localizedDescription else { return }
             showAlert?(String.Localized.Common.error, errorMessage)
         }
+    }
+    
+    private func addNewUserToDatabase(user: User) {
+        FirebaseHelper().addNewUserToDatabase(user: user, completion: { error in
+            if error == nil {
+                self.goToHomeViewController?()
+            } else {
+                guard let errorMessage = error?.localizedDescription else { return }
+                self.showAlert?(String.Localized.Common.error, errorMessage)
+            }
+        })
     }
 }
