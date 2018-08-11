@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setRootViewController()
         
+        let titleAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,
+                               .font: Font.fancyStyle.size(.navBarTitleSize)]
+        
+        UINavigationBar.appearance().barTintColor = Palette.mainGreen
+        UINavigationBar.appearance().titleTextAttributes = titleAttributes
+        application.statusBarStyle = .lightContent
+        
+        UITextField.appearance().font = Font.printStyle.size(.textFieldPlaceHolderSize)
+        
         return true
     }
     
@@ -46,8 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         if Auth.auth().currentUser != nil {
+            let user = User(name: Auth.auth().currentUser?.displayName ?? "Wayne Rumble")
             let homeViewModel = HomeViewModel()
-            let homeViewController = HomeViewController(viewModel: homeViewModel)
+            let homeViewController = HomeViewController(viewModel: homeViewModel, user: user)
             window?.rootViewController = UINavigationController(rootViewController: homeViewController)
         } else {
             let welcomeViewModel = WelcomeViewModel()
