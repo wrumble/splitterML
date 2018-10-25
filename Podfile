@@ -9,8 +9,6 @@ target 'splitterML' do
   # Pods for splitterML
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
   pod 'SwiftLint'
 end
 
