@@ -21,6 +21,15 @@
 		8787354C2181D93F0036F382 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787354B2181D93F0036F382 /* Font.swift */; };
 		8787354F2181EE080036F382 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787354E2181EE080036F382 /* UpdateProfileViewController.swift */; };
 		878735512181EF3A0036F382 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */; };
+		87BE8066211E30B7000B3163 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8065211E30B7000B3163 /* Palette.swift */; };
+		87BE8068211E319F000B3163 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8067211E319F000B3163 /* UIColor+Extension.swift */; };
+		87BE806B211E355E000B3163 /* SignPainter HouseScript Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */; };
+		87BE806E211E3678000B3163 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE806D211E3678000B3163 /* Fonts.swift */; };
+		87BE8070211E3B1F000B3163 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */; };
+		87BE8077211E5A08000B3163 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8076211E5A08000B3163 /* UIViewController+Extension.swift */; };
+		87BE807D211E628B000B3163 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE807C211E628B000B3163 /* UIStackView+Extension.swift */; };
+		87BE807F211E63B9000B3163 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE807E211E63B9000B3163 /* User.swift */; };
+		87BE8082211E68CB000B3163 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE8081211E68CB000B3163 /* Firebase.swift */; };
 		87C46037211DDF4200F38B39 /* libPods-SplitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */; };
 		87C46039211DDF5100F38B39 /* libPods-SplitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */; };
 		87DA5E96211722B800545E53 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5E95211722B800545E53 /* AlertView.swift */; };
@@ -81,6 +90,15 @@
 		8787354B2181D93F0036F382 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8787354E2181EE080036F382 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		87BE8065211E30B7000B3163 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		87BE8067211E319F000B3163 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignPainter HouseScript Regular.ttf"; sourceTree = "<group>"; };
+		87BE806D211E3678000B3163 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		87BE8076211E5A08000B3163 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		87BE807C211E628B000B3163 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		87BE807E211E63B9000B3163 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		87BE8081211E68CB000B3163 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		87C46034211DDF3600F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +172,9 @@
 				87DA5E97211722FB00545E53 /* String+Localized+Extension.swift */,
 				87DA5E9D2117678E00545E53 /* String+AccesID+Extension.swift */,
 				87DA5E9F21176AA200545E53 /* String+Extension.swift */,
+				87BE8067211E319F000B3163 /* UIColor+Extension.swift */,
+				87BE8076211E5A08000B3163 /* UIViewController+Extension.swift */,
+				87BE807C211E628B000B3163 /* UIStackView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,6 +185,8 @@
 				873C961620F982F2000B0F7C /* Layout.swift */,
 				87DA5EA121176B0C00545E53 /* Regex.swift */,
 				8787354B2181D93F0036F382 /* Font.swift */,
+				87BE8065211E30B7000B3163 /* Palette.swift */,
+				87BE806D211E3678000B3163 /* Fonts.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -222,6 +245,7 @@
 		87801DB220F642B500AA2AAC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				87BE8069211E3548000B3163 /* Fonts */,
 				87801D8420F5FE2500AA2AAC /* AppDelegate.swift */,
 				87801D8B20F5FE2700AA2AAC /* Assets.xcassets */,
 				87801D8D20F5FE2700AA2AAC /* LaunchScreen.storyboard */,
@@ -248,6 +272,7 @@
 				873C961520F982D9000B0F7C /* Constants */,
 				873C961220F9773E000B0F7C /* Extensions */,
 				87801DB520F642E200AA2AAC /* Protocols */,
+				87BE8080211E63BF000B3163 /* Models */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -267,6 +292,22 @@
 				878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */,
 			);
 			name = UpdateProfile;
+		87BE8069211E3548000B3163 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				87BE806F211E3B1F000B3163 /* SF-Pro-Display-Regular.otf */,
+				87BE806A211E355E000B3163 /* SignPainter HouseScript Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		87BE8080211E63BF000B3163 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87BE807E211E63B9000B3163 /* User.swift */,
+				87BE8081211E68CB000B3163 /* Firebase.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		87DA5E94211722A800545E53 /* Views */ = {
@@ -421,8 +462,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				87801D8F20F5FE2700AA2AAC /* LaunchScreen.storyboard in Resources */,
+				87BE806B211E355E000B3163 /* SignPainter HouseScript Regular.ttf in Resources */,
 				87DA5E9B2117243A00545E53 /* Localizable.strings in Resources */,
 				87801D8C20F5FE2700AA2AAC /* Assets.xcassets in Resources */,
+				87BE8070211E3B1F000B3163 /* SF-Pro-Display-Regular.otf in Resources */,
 				8751D0D120F969D800382172 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +518,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-f0850809/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -485,6 +529,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,17 +616,24 @@
 				8787354C2181D93F0036F382 /* Font.swift in Sources */,
 				87801D8720F5FE2500AA2AAC /* WelcomeViewController.swift in Sources */,
 				87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */,
+				87BE8077211E5A08000B3163 /* UIViewController+Extension.swift in Sources */,
+				87BE807D211E628B000B3163 /* UIStackView+Extension.swift in Sources */,
 				87DA5E96211722B800545E53 /* AlertView.swift in Sources */,
 				873C961720F982F2000B0F7C /* Layout.swift in Sources */,
 				878735512181EF3A0036F382 /* UpdateProfileViewModel.swift in Sources */,
+				87BE806E211E3678000B3163 /* Fonts.swift in Sources */,
 				87DA5E9E2117678E00545E53 /* String+AccesID+Extension.swift in Sources */,
+				87BE8082211E68CB000B3163 /* Firebase.swift in Sources */,
 				873C961420F9775C000B0F7C /* UIView+extension.swift in Sources */,
 				87DA5EAA21179C6800545E53 /* HomeViewModel.swift in Sources */,
+				87BE8068211E319F000B3163 /* UIColor+Extension.swift in Sources */,
 				87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */,
 				87DA5EA021176AA200545E53 /* String+Extension.swift in Sources */,
 				8787354F2181EE080036F382 /* UpdateProfileViewController.swift in Sources */,
 				873C961920F99E8E000B0F7C /* HomeViewController.swift in Sources */,
 				87DA5EA221176B0C00545E53 /* Regex.swift in Sources */,
+				87BE8066211E30B7000B3163 /* Palette.swift in Sources */,
+				87BE807F211E63B9000B3163 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
