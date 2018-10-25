@@ -40,8 +40,8 @@ class WelcomeViewModel {
     }
     
     func signInAndRetrieveData(credentials: AuthCredential) {
-        Auth.auth().signInAndRetrieveData(with: credentials) { (_, error) in
-            self.checkAfterAuth(error)
+        Auth.auth().signInAndRetrieveData(with: credentials) { (userData , error) in
+            self.checkAfterAuth(userData: userData, error: error)
         }
     }
     
@@ -61,7 +61,7 @@ class WelcomeViewModel {
     private func checkAuth(authFunction: AuthFunction, email: String, password: String, isNewSignUp: Bool = false) {
         guard let textFieldsAreValid = textFieldsAreValid?() else { return }
         if textFieldsAreValid {
-            authFunction(email, password) { [weak self] (_, error) in
+            authFunction(email, password) { [weak self] (userData, error) in
                 guard let strongSelf = self else { return }
                 strongSelf.checkAfterAuth(error, isNewSignUp)
             }
@@ -75,5 +75,16 @@ class WelcomeViewModel {
             guard let errorMessage = error?.localizedDescription else { return }
             showAlert?(String.Localized.Common.error, errorMessage)
         }
+    }
+    
+    private func addNewUserToDatabase(user: User) {
+        FirebaseHelper().addNewUserToDatabase(user: user, completion: { error in
+            if error == nil {
+                self.goToHomeViewController?()
+            } else {
+                guard let errorMessage = error?.localizedDescription else { return }
+                self.showAlert?(String.Localized.Common.error, errorMessage)
+            }
+        })
     }
 }

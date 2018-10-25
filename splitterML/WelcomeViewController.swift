@@ -119,8 +119,11 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController: Subviewable {
     
     func setupSubviews() {
-        navigationItem.setHidesBackButton(true, animated: true)
+        setupHideKeyboardOnTap()
+        title = String.Localized.Common.splitter
         
+        navigationItem.setHidesBackButton(true, animated: true)
+
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
         
@@ -132,16 +135,26 @@ extension WelcomeViewController: Subviewable {
         
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
+        loginButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         loginButton.backgroundColor = .black
 
+        let facebookButtonTitleText = NSAttributedString(string: String.Localized.WelcomeVC.loginWithFB)
+        facebookLoginButton.setAttributedTitle(facebookButtonTitleText, for: .normal)
+        facebookLoginButton.readPermissions = ["public_profile", "email"]
+        facebookLoginButton.delegate = self
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
         signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
+        signUpButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         signUpButton.setTitleColor(.black, for: .normal)
         signUpButton.titleLabel?.font = .systemFont(ofSize: Font.Size.smallButton)
         signUpButton.backgroundColor = .white
         
         resetPasswordButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         resetPasswordButton.setTitle(String.Localized.WelcomeVC.resetPassword, for: .normal)
+        resetPasswordButton.titleLabel?.font = Font.printStyle.size(.buttonTitleSize)
         resetPasswordButton.setTitleColor(.black, for: .normal)
         resetPasswordButton.titleLabel?.font = .systemFont(ofSize: Font.Size.smallButton)
         resetPasswordButton.backgroundColor = .white
@@ -164,18 +177,18 @@ extension WelcomeViewController: Subviewable {
                                                 constant: Layout.spacer).isActive = true
         }
         
-        emailTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        emailTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        emailTextField.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        emailTextField.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         emailTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         passwordTextField.pinTop(to: emailTextField, anchor: .bottom, constant: Layout.spacer)
-        passwordTextField.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        passwordTextField.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        passwordTextField.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        passwordTextField.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         passwordTextField.addHeightConstraint(with: Layout.textFieldHeight)
         
         loginButton.pinTop(to: passwordTextField, anchor: .bottom, constant: Layout.spacer)
-        loginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
+        loginButton.pinLeft(to: view, anchor: .left, constant: Layout.margin)
+        loginButton.pinRight(to: view, anchor: .right, constant: -Layout.margin)
         loginButton.addHeightConstraint(with: Layout.buttonHeight)
         
         signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.halfSizeSpacer)

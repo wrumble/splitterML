@@ -17,6 +17,7 @@ extension String {
     // swiftlint:disable nesting
     enum Localized {
         enum Common {
+            static let splitter = "splitter".localized
             static let cancel = "cancel".localized
             static let ok = "ok".localized
             static let error = "error".localized
