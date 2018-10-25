@@ -20,7 +20,7 @@
 "enterEmail" = "Please enter an email address";
 "enterEmailAndPassword" = "Please enter your email and password";
 "invalidEmail" = "Please enter a valid e-mail address";
-"inavalidPassword" = "Please enter a password 8 characters or longer";
+"inavalidPassword" = "Please enter a password 6 characters or longer";
 "login" = "Login";
 "signUp" = "Sign Up";
 "loginWithFB" = "Login with Facebook";
