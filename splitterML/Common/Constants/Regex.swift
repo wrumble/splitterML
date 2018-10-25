@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Regex {
+struct Regex {
     // swiftlint:disable:next line_length
     static let email = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-    static let password = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$"//8 character minimum
+    static let password = "^[a-zA-Z0-9]{6,}$"//6 character minimum
 }
