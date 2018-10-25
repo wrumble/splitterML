@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import FBSDKLoginKit
-import GoogleSignIn
 
-class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class WelcomeViewController: UIViewController {
 
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let loginButton = UIButton()
-    private let facebookLoginButton = FBSDKLoginButton()
-    private let googleLoginButton = GIDSignInButton()
     private let signUpButton = UIButton()
     private let resetPasswordButton = UIButton()
 
@@ -102,10 +98,6 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSign
         viewModel.loginToFirebase(email: email, password: password)
     }
     
-    private func loginWithFacebook() {
-        viewModel.loginWithFacebook()
-    }
-    
     @objc private func resetPassword() {
         if emailTextFieldValid() {
             guard let email = emailTextField.text else { return }
@@ -122,9 +114,8 @@ extension WelcomeViewController: Subviewable {
         view.backgroundColor = .white
         view.accessibilityIdentifier = String.AccessID.welcomeVC
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-
         emailTextField.placeholder = String.Localized.WelcomeVC.email
+        emailTextField.autocapitalizationType = .none
         
         passwordTextField.placeholder = String.Localized.WelcomeVC.password
         passwordTextField.isSecureTextEntry = true
@@ -132,11 +123,7 @@ extension WelcomeViewController: Subviewable {
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         loginButton.setTitle(String.Localized.WelcomeVC.login, for: .normal)
         loginButton.backgroundColor = .black
-        
-        facebookLoginButton.setTitle(String.Localized.WelcomeVC.loginWithFB, for: .normal)
-        facebookLoginButton.readPermissions = ["public_profile", "email"]
-        facebookLoginButton.delegate = self
-        
+
         signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
         signUpButton.setTitleColor(.black, for: .normal)
@@ -152,8 +139,6 @@ extension WelcomeViewController: Subviewable {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
-        view.addSubview(facebookLoginButton)
-        view.addSubview(googleLoginButton)
         view.addSubview(signUpButton)
         view.addSubview(resetPasswordButton)
     }
@@ -181,16 +166,6 @@ extension WelcomeViewController: Subviewable {
         loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         loginButton.addHeightConstraint(with: Layout.buttonHeight)
         
-        facebookLoginButton.pinTop(to: loginButton, anchor: .bottom, constant: Layout.spacer)
-        facebookLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        facebookLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        facebookLoginButton.addHeightConstraint(with: Layout.buttonHeight)
-        
-        googleLoginButton.pinTop(to: facebookLoginButton, anchor: .bottom, constant: Layout.spacer)
-        googleLoginButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
-        googleLoginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        googleLoginButton.addHeightConstraint(with: Layout.buttonHeight)
-        
         signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
         signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
@@ -200,30 +175,5 @@ extension WelcomeViewController: Subviewable {
         resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         resetPasswordButton.addHeightConstraint(with: Layout.buttonHeight)
-    }
-}
-
-extension WelcomeViewController {
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { }
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!,
-                     didCompleteWith result: FBSDKLoginManagerLoginResult!,
-                     error: Error!) {
-        switch result {
-        case .none: showAlert(title: String.Localized.Common.oops, message: error.localizedDescription)
-        case .some: loginWithFacebook()
-        }
-    }
-}
-
-extension WelcomeViewController {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        GIDSignIn.sharedInstance().signIn()
-        if error != nil {
-            viewModel.signInWithGoogle(user: user)
-        } else {
-            guard let error = error?.localizedDescription else { return }
-            showAlert(title: String.Localized.Common.oops, message: error)
-        }
     }
 }

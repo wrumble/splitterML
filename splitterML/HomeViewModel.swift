@@ -8,8 +8,6 @@
 
 import Foundation
 import Firebase
-import GoogleSignIn
-import FBSDKLoginKit
 
 class HomeViewModel {
  
@@ -21,7 +19,6 @@ class HomeViewModel {
             do {
                 try Auth.auth().signOut()
                 popHomeViewController?()
-                GIDSignIn.sharedInstance().signOut()
             } catch let error as NSError {
                 showAlert?(String.Localized.Common.oops, error.localizedDescription)
             }

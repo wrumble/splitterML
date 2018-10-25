@@ -8,8 +8,6 @@
 
 import Foundation
 import Firebase
-import FBSDKLoginKit
-import GoogleSignIn
 
 class WelcomeViewModel {
     
@@ -38,20 +36,6 @@ class WelcomeViewModel {
             
             strongSelf.showAlert?(title, message)
         })
-    }
-    
-    func loginWithFacebook() {
-        if let accessToken = FBSDKAccessToken.current() {
-            let credentials = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            signInAndRetrieveData(credentials: credentials)
-        }
-    }
-    
-    func signInWithGoogle(user: GIDGoogleUser) {
-        guard let authentication = user.authentication else { return }
-        let credentials = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        signInAndRetrieveData(credentials: credentials)
     }
     
     func signInAndRetrieveData(credentials: AuthCredential) {
