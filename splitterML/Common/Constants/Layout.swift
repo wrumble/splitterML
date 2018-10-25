@@ -16,5 +16,4 @@ struct Layout {
     static let smallButtonHeight: CGFloat = 22
     static let textFieldHeight: CGFloat = 44
     static let textButtonHeight: CGFloat = 30
-    static let textFieldHeight: CGFloat = 30
 }

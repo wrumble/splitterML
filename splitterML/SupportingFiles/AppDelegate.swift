@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setRootViewController()
         
         let titleAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,
-                               .font: Font.fancyStyle.size(.navBarTitleSize)]
+                               .font: UIFont(name: Font.fancyStyle, size: Font.Size.navBarTitle) as Any] as [NSAttributedStringKey : Any]
         
         UINavigationBar.appearance().barTintColor = Palette.mainGreen
         UINavigationBar.appearance().titleTextAttributes = titleAttributes
         application.statusBarStyle = .lightContent
         
-        UITextField.appearance().font = Font.printStyle.size(.textFieldPlaceHolderSize)
+        UITextField.appearance().font = UIFont(name: Font.printStyle, size: Font.Size.textFieldPlaceHolder)
         
         return true
     }
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         if Auth.auth().currentUser != nil {
-            let homeViewController = HomeViewController()
+            let homeViewController = HomeViewController(isRootViewController: true)
             window?.rootViewController = UINavigationController(rootViewController: homeViewController)
         } else {
             let welcomeViewController = WelcomeViewController()
