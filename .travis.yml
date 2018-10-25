@@ -8,6 +8,7 @@ before_install:
     - rvm install ruby-2.2.2
     - gem install cocoapods
     - gem install xcpretty
+    - gem 'nanaimo'
     - brew update
     - brew install swiftlint || true
     - pod install
