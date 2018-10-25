@@ -18,7 +18,7 @@ class WelcomeViewController: UIViewController {
 
     private let viewModel: WelcomeViewModel
     
-    required init(viewModel: WelcomeViewModel) {
+    required init(viewModel: WelcomeViewModel = WelcomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
@@ -30,11 +30,17 @@ class WelcomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     private func bindViewModel() {
         viewModel.resetEmailTextField = resetEmailTextField
         viewModel.showAlert = showAlert
         viewModel.textFieldsAreValid = textFieldsAreValid
         viewModel.goToHomeViewController = goToHomeViewController
+        viewModel.goToUpdateProfileViewController = goToUpdateProfileViewController
     }
     
     private func resetEmailTextField() {
@@ -54,9 +60,13 @@ class WelcomeViewController: UIViewController {
     }
     
     private func goToHomeViewController() {
-        let homeViewModel = HomeViewModel()
-        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        let homeViewController = HomeViewController()
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    private func goToUpdateProfileViewController() {
+        let updateProfileViewController = UpdateProfileViewController()
+        navigationController?.pushViewController(updateProfileViewController, animated: true)
     }
     
     private func textFieldsAreNotEmpty() -> Bool {
@@ -127,11 +137,13 @@ extension WelcomeViewController: Subviewable {
         signUpButton.addTarget(self, action: #selector(createFirebaseAccount), for: .touchUpInside)
         signUpButton.setTitle(String.Localized.WelcomeVC.signUp, for: .normal)
         signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.titleLabel?.font = .systemFont(ofSize: Font.Size.smallButton)
         signUpButton.backgroundColor = .white
         
         resetPasswordButton.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         resetPasswordButton.setTitle(String.Localized.WelcomeVC.resetPassword, for: .normal)
         resetPasswordButton.setTitleColor(.black, for: .normal)
+        resetPasswordButton.titleLabel?.font = .systemFont(ofSize: Font.Size.smallButton)
         resetPasswordButton.backgroundColor = .white
     }
     
@@ -166,14 +178,14 @@ extension WelcomeViewController: Subviewable {
         loginButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
         loginButton.addHeightConstraint(with: Layout.buttonHeight)
         
-        signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.spacer)
+        signUpButton.pinBottom(to: resetPasswordButton, anchor: .top, constant: -Layout.halfSizeSpacer)
         signUpButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         signUpButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        signUpButton.addHeightConstraint(with: Layout.buttonHeight)
+        signUpButton.addHeightConstraint(with: Layout.smallButtonHeight)
         
-        resetPasswordButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.spacer)
+        resetPasswordButton.pinBottom(to: view, anchor: .bottom, constant: -Layout.halfSizeSpacer)
         resetPasswordButton.pinLeft(to: view, anchor: .left, constant: Layout.spacer)
         resetPasswordButton.pinRight(to: view, anchor: .right, constant: -Layout.spacer)
-        resetPasswordButton.addHeightConstraint(with: Layout.buttonHeight)
+        resetPasswordButton.addHeightConstraint(with: Layout.smallButtonHeight)
     }
 }

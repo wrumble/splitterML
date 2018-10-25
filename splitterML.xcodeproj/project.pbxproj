@@ -18,6 +18,9 @@
 		87801D9A20F5FE2700AA2AAC /* SplitterMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801D9920F5FE2700AA2AAC /* SplitterMLTests.swift */; };
 		87801DA520F5FE2700AA2AAC /* SplitterMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */; };
 		87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87801DB620F6433900AA2AAC /* Subviewable.swift */; };
+		8787354C2181D93F0036F382 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787354B2181D93F0036F382 /* Font.swift */; };
+		8787354F2181EE080036F382 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787354E2181EE080036F382 /* UpdateProfileViewController.swift */; };
+		878735512181EF3A0036F382 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */; };
 		87C46037211DDF4200F38B39 /* libPods-SplitterMLTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */; };
 		87C46039211DDF5100F38B39 /* libPods-SplitterMLUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */; };
 		87DA5E96211722B800545E53 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA5E95211722B800545E53 /* AlertView.swift */; };
@@ -75,6 +78,9 @@
 		87801DA420F5FE2700AA2AAC /* SplitterMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterMLUITests.swift; sourceTree = "<group>"; };
 		87801DA620F5FE2700AA2AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87801DB620F6433900AA2AAC /* Subviewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subviewable.swift; sourceTree = "<group>"; };
+		8787354B2181D93F0036F382 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		8787354E2181EE080036F382 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		87C46034211DDF3600F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46036211DDF4200F38B39 /* libPods-SplitterMLTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C46038211DDF5100F38B39 /* libPods-SplitterMLUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-SplitterMLUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +163,7 @@
 			children = (
 				873C961620F982F2000B0F7C /* Layout.swift */,
 				87DA5EA121176B0C00545E53 /* Regex.swift */,
+				8787354B2181D93F0036F382 /* Font.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				87DA5EA5211788C500545E53 /* Welcome */,
+				8787354D2181EDE60036F382 /* UpdateProfile */,
 				87DA5EA821179C0300545E53 /* Home */,
 			);
 			name = ViewControllers;
@@ -250,6 +258,15 @@
 				87801DB620F6433900AA2AAC /* Subviewable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8787354D2181EDE60036F382 /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				8787354E2181EE080036F382 /* UpdateProfileViewController.swift */,
+				878735502181EF3A0036F382 /* UpdateProfileViewModel.swift */,
+			);
+			name = UpdateProfile;
 			sourceTree = "<group>";
 		};
 		87DA5E94211722A800545E53 /* Views */ = {
@@ -551,15 +568,18 @@
 			files = (
 				87DA5E98211722FB00545E53 /* String+Localized+Extension.swift in Sources */,
 				87DA5EA7211788E500545E53 /* WelcomeViewModel.swift in Sources */,
+				8787354C2181D93F0036F382 /* Font.swift in Sources */,
 				87801D8720F5FE2500AA2AAC /* WelcomeViewController.swift in Sources */,
 				87801D8520F5FE2500AA2AAC /* AppDelegate.swift in Sources */,
 				87DA5E96211722B800545E53 /* AlertView.swift in Sources */,
 				873C961720F982F2000B0F7C /* Layout.swift in Sources */,
+				878735512181EF3A0036F382 /* UpdateProfileViewModel.swift in Sources */,
 				87DA5E9E2117678E00545E53 /* String+AccesID+Extension.swift in Sources */,
 				873C961420F9775C000B0F7C /* UIView+extension.swift in Sources */,
 				87DA5EAA21179C6800545E53 /* HomeViewModel.swift in Sources */,
 				87801DB720F6433A00AA2AAC /* Subviewable.swift in Sources */,
 				87DA5EA021176AA200545E53 /* String+Extension.swift in Sources */,
+				8787354F2181EE080036F382 /* UpdateProfileViewController.swift in Sources */,
 				873C961920F99E8E000B0F7C /* HomeViewController.swift in Sources */,
 				87DA5EA221176B0C00545E53 /* Regex.swift in Sources */,
 			);

@@ -17,6 +17,7 @@ class WelcomeViewModel {
     var resetEmailTextField: (() -> Void)?
     var textFieldsAreValid: (() -> (Bool))?
     var goToHomeViewController: (() -> Void)?
+    var goToUpdateProfileViewController: (() -> Void)?
     
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { [weak self] (error) in
@@ -47,7 +48,8 @@ class WelcomeViewModel {
     func createFirebaseAccount(email: String, password: String) {
         checkAuth(authFunction: Auth.auth().createUser,
                   email: email,
-                  password: password)
+                  password: password,
+                  isNewSignUp: true)
     }
     
     func loginToFirebase(email: String, password: String) {
@@ -56,19 +58,19 @@ class WelcomeViewModel {
                   password: password)
     }
     
-    private func checkAuth(authFunction: AuthFunction, email: String, password: String) {
+    private func checkAuth(authFunction: AuthFunction, email: String, password: String, isNewSignUp: Bool = false) {
         guard let textFieldsAreValid = textFieldsAreValid?() else { return }
         if textFieldsAreValid {
             authFunction(email, password) { [weak self] (_, error) in
                 guard let strongSelf = self else { return }
-                strongSelf.checkAfterAuth(error)
+                strongSelf.checkAfterAuth(error, isNewSignUp)
             }
         }
     }
     
-    private func checkAfterAuth(_ error: Error?) {
+    private func checkAfterAuth(_ error: Error?, _ isNewSignUp: Bool = false) {
         if error == nil {
-            goToHomeViewController?()
+            isNewSignUp ? goToUpdateProfileViewController?() : goToHomeViewController?()
         } else {
             guard let errorMessage = error?.localizedDescription else { return }
             showAlert?(String.Localized.Common.error, errorMessage)
