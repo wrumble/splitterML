@@ -11,7 +11,8 @@ before_install:
     - gem install nanaimo
     - brew update
     - brew install swiftlint || true
-    - pod install
+    - pod repo update
+    - pod install --verbose
 
 
 podfile: Podfile
