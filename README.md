@@ -7,7 +7,7 @@ The splitter iOS app will eventually incorporate Machine Learning to find receip
 # Trello board
 https://trello.com/b/HuqhF9Q7/splitterml
 
-#Design Case Studies
+# Design Case Studies
 
 Emily Alpert - https://medium.com/@emily.alpert/the-splitter-dining-experience-c80021e70c7a
 
